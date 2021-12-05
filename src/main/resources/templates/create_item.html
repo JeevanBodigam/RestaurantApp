@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Bawarchi House</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<style>
+.menu {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.menu div {
+	text-align: center;
+	margin: 2px;
+}
+
+li, a {
+	color: white;
+	font-weight: bolder;
+}
+.adminLink{
+float:right;
+position: absolute;
+right:10px;
+}
+</style>
+<script>
+	function didLoad(){
+	
+		while(true){
+			let key = window.prompt("Enter key to add Item")
+			if(key=="admin"){
+				console.log("admin user dashboard")
+				break;
+			}else{
+				alert("Please enter the access key")
+			}
+		}
+	}
+</script>
+</head>
+<body onLoad="didLoad()">
+	<nav class="navbar navbar-expand-md bg-danger navbar-dark ">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Bawarchi House</a>
+
+		<!-- Toggler/collapsible Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/home}">Restaurant</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class = "container">
+	
+		
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Create New Student </h1>
+				<div class = "card-body">
+					<form th:action="@{/menu}" th:object = "${menu}" method="POST">
+						<div class ="form-group">
+							<label> Item  Name </label>
+							<input
+							type = "text"
+							name = "itemName"
+							th:field = "*{itemName}"
+							class = "form-control"
+							placeholder="Enter Dish  Name" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Item Price </label>
+							<input
+							type = "text"
+							name = "itemPrice"
+							th:field = "*{itemPrice}"
+							class = "form-control"
+							placeholder="Enter Dish Price" 
+							/>
+						</div>
+						<div>
+						<label> Dish Has Discount </label>
+							<select th:field="*{hasDiscount}" name="hasDiscount" class="form-control">
+							<option value="true">Yes</option>
+							<option value="false">No</option>
+							</select>
+						</div>
+						<div class ="form-group">
+							<label> Item Image </label>
+							<input
+							type = "text"
+							name = "itemImg"
+							th:field = "*{itemImg}"
+							class = "form-control"
+							placeholder="Give Image URL" 
+							/>
+						</div>
+						
+						<div class = "box-footer">
+							<button type="submit" class = "btn btn-primary">
+								Submit
+							</button>
+						</div>
+					</form>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

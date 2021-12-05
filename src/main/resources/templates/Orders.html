@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title> Bawarchi House</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<style>
+.ordersTable {
+	margin: 10px;
+	width: auto;
+}
+li,a{
+color:white;
+font-weight:bolder;
+}
+.main{
+text-align:"center";
+margin-left: 30%;
+}
+
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-danger navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Bawarchi House</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/home}">Restaurant</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div th:if="${cart !=0 }" class="main">
+		<table class="table table-striped table-bordered ordersTable">
+		<thead class="table-dark">
+			<tr> 
+				<th scope="col">Item Info</th>
+				<th scope="col">Order ID</th>
+				<th scope="col">Quantity</th>
+				<th scope="col">Amount</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="order: ${orders}">
+				<td th:text=" ${order.itemName}"></td>
+				<td th:text="${order.orderID}"></td>
+				<td th:text="${order.totalItems}"></td>
+				<td th:text="${order.totalAmount}"></td>
+				
+			</tr>
+		</tbody>
+	</table>
+	<h1 th:text="'Total Amount is = ' + ${orderSum}"></h1>
+	</div>
+	<div th:if="${cart} == 0">
+		<h1>No items in the bag. Grab food from the <a href="/gotoHome" style="color:red;" th:text="Menu.."></a></h1>
+	</div>
+	<div class="main" th:if="${orderSum}!=0.0"><a class = "btn btn-secondary" th:href = "@{/order/checkout}">Checkout</a></div>
+			
+</body>
+</html>
