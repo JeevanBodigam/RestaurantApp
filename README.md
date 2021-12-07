@@ -21,11 +21,11 @@
 
 ## How to Run the Project
 ### Server-side
-sh
-Open Eclipse and Load the project after successful Extraction.
-open main application class
-Right click and select Run as spring boot application
-Project will start on a default port
+- sh
+- Open Eclipse and Load the project after successful Extraction.
+- Open main application class
+- Right click and select Run as spring boot application
+- Project will start on a default port
 
 ## Displaying in browser
 
