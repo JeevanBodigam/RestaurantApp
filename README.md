@@ -13,7 +13,7 @@
 - SpringData JPA 
 - Maven
 - JDK 
-- Thyemeleaf
+- Thymeleaf
 - Embedded Tomcat
 - MySQL Database
 - Tomcat Web server
