@@ -7,11 +7,11 @@ import com.bodigam.RestaurantApp.entity.Menu;
 public interface RestaurantService {
 	List<Menu> getAllMenuItems();
 
-	Menu saveMenu(Menu student);
+	Menu saveMenu(Menu menu);
 
 	Menu getMenuById(int id);
 
-//	Menu updateMenu(Menu student);
+//	Menu updateMenu(Menu menu);
 //
 //	void deleteMenuById(Long id);
 }
